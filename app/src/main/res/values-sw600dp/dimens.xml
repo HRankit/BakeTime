@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_recipe_item">20dp</dimen>
+    <dimen name="steps_description_padding_left">16dp</dimen>
+    <dimen name="steps_description_padding_rightt">16dp</dimen>
+
+
+</resources>

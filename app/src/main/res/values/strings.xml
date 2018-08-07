@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">BakeTime</string>
+
+    <string name="ingredients">INGREDIENTS</string>
+
+
+    <string name="label_cup">CUP</string>
+    <string name="label_tblspn">TABLE\nSPOON</string>
+    <string name="label_teaspn">TEA\nSPOON</string>
+    <string name="label_kg">KG</string>
+    <string name="label_gram">GRAM</string>
+    <string name="label_ounce">OUNCE</string>
+    <string name="sharedPrefString">BakingAppPreferences</string>
+    <string name="time_to_bake">Time to Bake</string>
+
+
+    <string name="click_below_link_if_video_is_not_playing">Open In Browser:</string>
+    <string name="videoErrorMessage">\"Unable to play video on Your Device. Click on the link to open it in browser.\"</string>
+    <string name="position_0">Position is 0</string>
+    <string name="not_found">Not Found</string>
+    <string name="landscape">Landscape it is</string>
+    <string name="portrait">Portrait it is</string>
+    <string name="view">View</string>
+    <string name="icon_of_unit">Icon Of Unit</string>
+    <string name="ingredient_placeholder">Semi Sweet Chocolate chips And this is that</string>
+    <string name="quantity_placeholder">004</string>
+    <string name="measure_name_placeholder">CUP</string>
+
+    <string name="no_url_available">No Url Available</string>
+    <string name="measure_icon">measure_icon</string>
+    <string name="placeholder_measure">004</string>
+    <string name="placeholder_measure_name">CUP</string>
+    <string name="progressViewModelPlaceholder">PVM Changed %s</string>
+    <string name="error_occured">Oops!!! Error Occurred.  Please try again.</string>
+    <string name="try_again">TRY AGAIN</string>
+    <string name="nuttela_pie_placeholder">Nuttela Pie</string>
+    <string name="placeholder">placeholder</string>
+    <string name="splash_image">Splash Image</string>
+    <string name="previous"><![CDATA[<<]]></string>
+    <string name="next"><![CDATA[>>]]></string>
+    <string name="textview">TextView</string>
+    <string name="ToastMessage">Checkout the Widget to get Ingredients of your favorite cake on home screen</string>
+
+
+</resources>
