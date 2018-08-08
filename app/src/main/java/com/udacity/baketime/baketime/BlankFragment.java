@@ -58,6 +58,8 @@ public class BlankFragment extends Fragment {
     private ImageView mFullScreenIcon;
     private Dialog mFullScreenDialog;
     private boolean videoAvailable;
+    private String PLAYER_POSITION = "player_position";
+    private String PLAYER_PLAY_WHEN_READY = "should_video_play";
 
     public BlankFragment() {
         // Required empty public constructor
@@ -128,12 +130,15 @@ public class BlankFragment extends Fragment {
         if (savedInstanceState != null) {
             String STATE_PLAYER_FULLSCREEN = "isPlayerFullscreen";
             mExoPlayerFullscreen = savedInstanceState.getBoolean(STATE_PLAYER_FULLSCREEN);
+            playbackPosition = savedInstanceState.getLong(PLAYER_POSITION);
+            playWhenReady = savedInstanceState.getBoolean(PLAYER_PLAY_WHEN_READY);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View returnView = inflater.inflate(R.layout.fragment_video_playback, container, false);
 
@@ -180,6 +185,18 @@ public class BlankFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String STATE_PLAYER_FULLSCREEN = "isPlayerFullscreen";
+            mExoPlayerFullscreen = savedInstanceState.getBoolean(STATE_PLAYER_FULLSCREEN);
+            playbackPosition = savedInstanceState.getLong(PLAYER_POSITION);
+            playWhenReady = savedInstanceState.getBoolean(PLAYER_PLAY_WHEN_READY);
+        }
+        super.onViewStateRestored(savedInstanceState);
+
+    }
+
     private void initializePlayer(String vidUrl) {
         player = ExoPlayerFactory.newSimpleInstance(
                 new DefaultRenderersFactory(getActivity()),
@@ -193,7 +210,6 @@ public class BlankFragment extends Fragment {
         player.setVideoScalingMode(C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
         player.setPlayWhenReady(playWhenReady);
         player.seekTo(currentWindow, playbackPosition);
-
         if (vidUrl.equals(URL_NOT_FOUND)) {
             fl.setVisibility(View.GONE);
             videoAvailable = false;
@@ -203,7 +219,7 @@ public class BlankFragment extends Fragment {
             Uri uri = Uri.parse(vidUrl);
 
             MediaSource mediaSource = buildMediaSource(uri);
-            player.prepare(mediaSource, true, false);
+            player.prepare(mediaSource, false, false);
             videoAvailable = true;
         }
 
@@ -285,6 +301,15 @@ public class BlankFragment extends Fragment {
             player.release();
             player = null;
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        releasePlayer();
+        outState.putLong(PLAYER_POSITION, playbackPosition);
+        outState.putBoolean(PLAYER_PLAY_WHEN_READY, playWhenReady);
+        super.onSaveInstanceState(outState);
+
     }
 
     private class ComponentListener extends Player.DefaultEventListener {
